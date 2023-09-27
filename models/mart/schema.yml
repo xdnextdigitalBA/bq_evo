@@ -1,0 +1,81 @@
+version: 2
+
+models:
+#Google Ads
+  - name: mrt_google_ads_basic_campaign_stats
+    description: Enthält alle Vermarktungsstatistiken für das Performancereporting. Keine Conversioninformationen enthalten, somit keine Bewertung der Kampagnen möglich. Lediglich deskriptive Informationen. Muss in Performancereporting mit Conversioninformationen verknüpft werden.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+      - name: Keyword
+        description: Enthält zum Status-Quo keine Informationen (19.09.2023)
+      - name: KeywordMatchType
+        description: Enthalt zum Status-Quo keine Informationen (19.09.2023)
+#Bing Ads
+  - name: mrt_bing_ads_basic_campaign_stats
+    description: Enthält alle Vermarktungsstatistiken für das Performancereporting. Keine Conversioninformationen enthalten, somit keine Bewertung der Kampagnen möglich. Lediglich deskriptive Informationen. Muss in Performancereporting mit Conversioninformationen verknüpft werden.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+      - name: Keyword
+        description: Enthält zum Status-Quo keine Informationen (19.09.2023)
+      - name: KeywordMatchType
+        description: Enthalt zum Status-Quo keine Informationen (19.09.2023)
+#Google Analytics
+  - name: mrt_google_analytics_campaign_webperformance
+    description: Enthält grundlegende Web-Performancewerte aller über GA4 erfassten Kampagnen.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+  - name: mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized
+    description: Enthält alle Conversiondaten bis einschl. 04.06.2023 aus Unisversal Analytics, alle Conversions ab 05.06.2023 aus Google Analytics 4.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+      - name: Keyword
+        description: Enthält zum Status-Quo keine Informationen (19.09.2023)
+      - name: KeywordMatchType
+        description: Enthalt zum Status-Quo keine Informationen (19.09.2023)
+  - name: mrt_google_analytics_merged_ua_ga4_transactions_summarized
+    description: Enthält alle aggregierten Transaktionen bis einschl. 04.06.2023 aus Unisversal Analytics, alle Conversions ab 05.06.2023 aus Google Analytics 4. Enthält keine Detailinformationen je Transaktion.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+      - name: Keyword
+        description: Enthält zum Status-Quo keine Informationen (19.09.2023)
+      - name: KeywordMatchType
+        description: Enthalt zum Status-Quo keine Informationen (19.09.2023)
+#Meta
+  - name: mrt_meta_basic_campaign_stats
+    description: Enthält die Performancedaten der Metakampagnen.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+
+#Linkedin
+  - name: mrt_linkedin_basic_campaign_stats
+    description: Enthält die Performancedaten der LinkedinKampagnen.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+
+#Multi-Source_Models
+  - name: mrt_metainformation_campaigns
+    description: Enthält Kampagnen aus allen Quelldatensystemen mit Metainformationen.
+    columns:
+      - name: CampaignID
+        description: Primärschlüssel
+        tests:
+          - not_null 
+      - name: IsPaid
+        description: <true> = bezahlte Kampagne 

@@ -1,0 +1,74 @@
+
+version: 2
+
+models:
+#Google Ads
+  - name: stg_google_ads_campaign_stats
+    description: Enthält alle Performancestatistiken der Google Ads Kampagnen
+    columns:
+      - name: id
+        description: Kampagnen-ID Google, wichtigster Sekundärschlüssel
+        tests:
+          - not_null
+      - name: cost
+        description: Kosten in Euro
+      - name: conversions
+        description: Conversions gemäß Google Ads - sollte nicht verwendet werden. Für Reportings werden Werte direkt aus Google Analytics genutzt. 
+  - name: stg_google_ads_campaign_history
+    description: Enthält die Änderungshistorie der Kampagnen
+    columns:
+      - name: id
+        description: Kampagnen-ID Google, wichtigster Sekundärschlüssel
+        tests:
+          - not_null
+      - name: Partner
+        description: Ist immer EVO, darf keine leeren Werte enthalten
+        test:
+          - not_null
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        test:
+          - not_null
+
+#Bing Ads
+  - name: stg_bing_ads_campaign_history
+    description: Enthält die Änderungshistorie der Kampagnen
+    columns:
+      - name: id
+        description: Kampagnen-ID Microsoft, wichtigster Sekundärschlüssel
+        tests:
+          - not_null
+      - name: Partner
+        description: Ist immer EVO, darf keine leeren Werte enthalten
+        test:
+          - not_null
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        test:
+          - not_null
+
+#Google Analytics
+  - name: stg_google_analytics_352128287
+    description: Enthält alle GA4-Events in Tabellenform ohne Schachtelung. Bereinigt fehlerhafte Events ohne Session-ID. Offzielle Doku Google > https://support.google.com/analytics/answer/7029846?hl=en#zippy=
+    columns:
+      - name: ltv_revenue
+        description: User Lifetime Value
+      - name: ltv_currency
+        description: Einheit des User Lifetime Value
+  - name: stg_google_analytics_historic_campaigns
+    description: Enthält alle historischen Kampagnen aus Universal Analytics / GA3
+    columns:
+      - name: CampaignID
+        description: Primärschlüssel der Tabelle
+
+#Meta
+  - name: stg_meta_campaign_stats
+    description: Enthält alle Performancestatistiken der Metakampagnen. Enthält keine Conversioninformationen.
+  - name: stg_meta_campaign_information
+    description: Enthält alle Kampagneninformationen der Metakampagnen. Inklusive Informationen über zugehörige Anzeigengruppen und Anzeigen.
+
+#Linkedin
+  - name: stg_linkedin_ad_analytics_by_campaign
+    description: Enthält alle Performancestatistiken der Linkedin-Kampagnen. Enthält keine Conversioninformationen.
+  - name: stg_linkedin_campaign_history
+    description: Enthält alle Kampagneninformationen der Metakampagnen.

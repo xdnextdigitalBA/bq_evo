@@ -1,0 +1,61 @@
+version: 2
+
+# Bei BigQuery:
+# database = project id
+# schema = dataset
+
+sources:
+#GA4-Daten
+  - name: analytics_352128287
+    description: "alle GA4 Daten NEW"
+    project: oss-big-query-dashboard-prod  
+    dataset: analytics_352128287 
+    tables:
+      - name: events
+        identifier: "events_*"
+
+#Google Ads
+  - name: google_ads
+    description: "alle Google Ads Daten Klick & NEW"
+    project: oss-big-query-dashboard-prod 
+    dataset: google_ads
+    tables:
+      - name: campaign_history
+      - name: campaign_stats  
+
+#Bing Ads
+  - name: bingads
+    description: "Alle Bing Ads Daten"
+    project: oss-big-query-dashboard-prod  
+    dataset: bingads  
+    tables:
+      - name: campaign_performance_daily_report
+      - name: campaign_history
+
+#Meta
+  - name: facebook_ads
+    description: "alle Daten Meta"
+    project: oss-big-query-dashboard-prod
+    dataset: facebook_ads
+    tables:
+      - name: fb_basic_performance_per_day
+      - name: fb_campaign_information
+
+#Linkedin
+  - name: linkedin_ads
+    description: "alle Daten LinkedIn"
+    project: oss-big-query-dashboard-prod
+    dataset: linkedin_ads
+    tables:
+      - name: ad_analytics_by_campaign
+      - name: campaign_history
+
+#Manuelle Datenuploads und historische Daten
+  - name: manual_data_upload
+    description: "enthält einmalig hochgeladene Daten, insb. historische Informationen"
+    project: oss-big-query-dashboard-prod
+    dataset: manual_data_upload
+    tables:
+      - name: universal_analytics_historic_campaigns
+      - name: universal_analytics_historic_goal_conversions
+      - name: universal_analytics_historic_transactions

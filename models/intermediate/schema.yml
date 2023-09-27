@@ -1,0 +1,88 @@
+version: 2
+
+models:
+#Google Ads
+  - name: int_google_ads_unique_campaigns
+    description: Enthält gruppierte Google Ads Kampagnen ohne historische Informationen. Dient als einfache Datenbank der wichtigsten Metainfos der Kampagnen.
+    columns:
+      - name: CampaignID
+        description: "Primärschlüssel - insbesondere zum Join mit statistischen Kampagneninformationen"
+        tests:
+          - unique
+          - not_null
+  - name: int_google_ads_campaign_stats
+    description: Enthält eine Übersicht aller Performanceinfos jeder Kampagne.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+
+#Bing Ads
+  - name: int_bing_ads_unique_campaigns
+    description: Enthält gruppierte Bing Ads Kampagnen ohne historische Informationen. Dient als einfache Datenbank der wichtigsten Metainfos der Kampagnen.
+    columns:
+      - name: CampaignID
+        description: "Primärschlüssel - insbesondere zum Join mit statistischen Kampagneninformationen"
+        tests:
+          - unique
+          - not_null
+  - name: int_bing_ads_campaign_performance_joined_campaign_names
+    description: Enthält eine Übersicht aller Performanceinfos jeder Kampagne inkl. Klartext der Kampagne.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+
+#Google Analytics
+  - name: int_google_analytics_all_events
+    description: Enthält alle Events und NDG-Kampagnenschlüssel.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        tests:
+          - not_null
+  - name: int_google_analytics_all_campaigns
+    description: Enthält alle Kampagnen aus GA4 und GA3.
+    columns:
+      - name: CampaignID
+        description: Primärschlüssel
+        tests:
+          - not_null
+  - name: int_google_analytics_NDG_conversionevents_GA4
+    description: Enthält alle relevanten Conversionevents aus Google Analytics 4 für NDG-Vermarktung. Inklusive aller E-Commerce-Events (ohne Metainformationen).
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel zur Verknüpfung mit ergänzenden Kampagneninformationen
+        tests:
+          - not_null
+      - name: ZielvorhabenID
+        description: Relevante ID für das Reporting von Next Digital.
+        tests:
+          - not_null
+      - name: ZielvorhabenName
+        description: Vorherige Bezeichnung <event_name>
+      - name: Keyword
+        description: Enthält zum Status-Quo keine Informationen (19.09.2023)
+      - name: KeywordMatchType
+        description: Enthalt zum Status-Quo keine Informationen (19.09.2023)
+  - name: int_google_analytics_all_purchases_GA4
+    description: Enthält alle <purchase-events> aus Google Analytics 4. Inkl. aller zugehörigen Metainformationen aus GA4.
+    columns:
+      - name: CampaignID
+        description: Wichtigster Schlüssel zur Verknüpfung mit ergänzenden Kampagneninformationen
+        tests:
+          - not_null
+
+#Meta
+  - name: int_meta_unique_campaigns
+    description: Enthält alle Metakampagnen.
+  - name: int_meta_campaign_stats_joined_campaign_names
+    description: Enthält Performanceinformationen aller Metakampagnen.
+
+  #Linkedin
+  - name: int_linkedin_unique_campaigns_reduced_information
+    description: Enthält alle Linkedin-Kampagnen - ggü. Quelldaten nur ausgewählte Spalten für Weiterverarbeitung NDG.
+  - name: int_linkedin_campaign_stats_joined_campaign_names
+    description: Enthält Performanceinformationen aller Metakampagnen. 
