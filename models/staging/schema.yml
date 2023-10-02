@@ -26,7 +26,7 @@ models:
         test:
           - not_null
       - name: CampaignID
-        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        description: '{{ doc("campaignID") }}'
         test:
           - not_null
 
@@ -43,7 +43,7 @@ models:
         test:
           - not_null
       - name: CampaignID
-        description: Wichtigster Schlüssel für NDG - setzt sich aus Medium, Source, Partner & Kampagnenname zusammen. Darf niemals leeren Wert enthalten. Upstream als Primärschlüssel genutzt.
+        description: '{{ doc("campaignID") }}'
         test:
           - not_null
 
@@ -59,7 +59,7 @@ models:
     description: Enthält alle historischen Kampagnen aus Universal Analytics / GA3
     columns:
       - name: CampaignID
-        description: Primärschlüssel der Tabelle
+        description: '{{ doc("campaignID") }}'
 
 #Meta
   - name: stg_meta_campaign_stats
