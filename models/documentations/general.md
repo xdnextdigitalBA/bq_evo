@@ -26,7 +26,8 @@ Alle Modelle im Mart-Ordner/-Dataset bauen auf Modellen der Intermediate-Stufe a
 
 # Verwendung von Tags
 
-Tags werden primär auf der Ebene der "Mart-Modelle" verwendet. Sie dienen der schnellen Filterung von Modellen für einen bestimmten Zweck. Jedem Modell können beliebig viele Tags zugeordnet werden. Werden neue Tags eingeführt, so sind diese in der folgenden Auflistung zu ergänzen:
+Tags werden primär auf der Ebene der "Mart-Modelle" verwendet. Sie dienen der schnellen Filterung von Modellen für einen bestimmten Zweck. Jedem Modell können beliebig viele Tags zugeordnet werden. 
+**Ein Tag sollte genutzt werden, um Quellsysteme & Vewerndungszwecke identifizieren zu können.** Werden neue Tags eingeführt, so sind diese in der folgenden Auflistung zu ergänzen:
 - **backenddaten:** Enthält Daten aus Backendsystemen (bspw. Admintool)
 - **bing ads:** Modell enthält Daten aus Bing Ads (Quellsystem)
 - **google ads:** Modell enthält Daten aus Google Ads (Quellsystem)
