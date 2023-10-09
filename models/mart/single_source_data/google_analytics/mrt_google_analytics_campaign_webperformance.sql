@@ -1,7 +1,8 @@
 {{
   config(
     unique_key=['Date', 'CampaignID'],
-    on_schema_change='sync_all_columns'
+    on_schema_change='sync_all_columns',
+    tags=["performancereporting", "vermarktungsdashboard", "google analytics"]
     )
 }}
 

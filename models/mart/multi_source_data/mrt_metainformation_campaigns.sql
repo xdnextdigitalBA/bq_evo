@@ -1,6 +1,7 @@
 {{
   config(
-    materialized='table'
+    materialized='table',
+    tags=["performancereporting", "vermarktungsdashboard"]
     )
 }}
 
@@ -40,6 +41,18 @@ _bingads_campaigns AS(
     FROM {{ ref('int_bing_ads_unique_campaigns')}}
 ),
 
+_linkedin_campaigns AS(
+    SELECT
+        Campaign,
+        Medium,
+        Partner,
+        Source,
+        'true' as IsPaid,
+        CampaignID
+    FROM {{ ref('int_linkedin_unique_campaigns_reduced_information')}}
+),
+
+
 _merged_googleads_and_analytics AS(
     SELECT * FROM _googleads_campaigns
     UNION ALL
@@ -52,10 +65,16 @@ _merged_bingads AS(
     SELECT * FROM _bingads_campaigns    
 ),
 
+_merged_linkedin AS(
+    SELECT * FROM _merged_bingads
+    UNION ALL
+    SELECT * FROM _linkedin_campaigns    
+),
+
 _final AS(
     SELECT 
         DISTINCT *
-    FROM _merged_bingads
+    FROM _merged_linkedin
 )
 
 SELECT * FROM _final

@@ -1,3 +1,7 @@
+{{ config(
+    tags=["performancereporting", "vermarktungsdashboard", "google analytics"]
+) }}
+
 WITH _raw AS(
   SELECT 
     event_date as Date,

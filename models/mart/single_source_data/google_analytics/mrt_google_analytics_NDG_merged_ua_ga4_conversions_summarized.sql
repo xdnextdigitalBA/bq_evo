@@ -1,3 +1,7 @@
+{{ config(
+    tags=["performancereporting", "vermarktungsdashboard", "google analytics"]
+) }}
+
 WITH ga4_conversions AS(
     SELECT *
     FROM {{ ref('int_google_analytics_NDG_conversionevents_GA4')}}

@@ -1,3 +1,5 @@
+
+
 WITH _raw AS(
   SELECT 
     event_date as Date,

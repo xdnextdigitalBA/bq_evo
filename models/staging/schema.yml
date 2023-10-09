@@ -4,25 +4,118 @@ version: 2
 models:
 #Google Ads
   - name: stg_google_ads_campaign_stats
-    description: Enthält alle Performancestatistiken der Google Ads Kampagnen
+    description: '{{ doc("campaign_stats") }}'
     columns:
-      - name: id
-        description: Kampagnen-ID Google, wichtigster Sekundärschlüssel
-        tests:
-          - not_null
-      - name: cost
-        description: Kosten in Euro
+      - name: _fivetran_id
+        description: '{{ doc("fivetran") }}'
+      - name: _fivetran_synced
+        description: '{{ doc("fivetran") }}'
+      - name: customer_id
+        description: '{{ doc("ad_account") }}'
+      - name: active_view_impressions
+        description: '{{ doc("unused_columns") }}'
+      - name: active_view_measurability
+        description: '{{ doc("unused_columns") }}'
+      - name: active_view_measurable_cost_micros
+        description: '{{ doc("unused_columns") }}'
+      - name: active_view_measurable_impressions
+        description: '{{ doc("unused_columns") }}'
+      - name: active_view_viewability
+        description: '{{ doc("unused_columns") }}'
+      - name: ad_network_type
+        description: '{{ doc("unused_columns") }}'
+      - name: base_campaign
+        description: '{{ doc("unused_columns") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
       - name: conversions
-        description: Conversions gemäß Google Ads - sollte nicht verwendet werden. Für Reportings werden Werte direkt aus Google Analytics genutzt. 
-  - name: stg_google_ads_campaign_history
-    description: Enthält die Änderungshistorie der Kampagnen
-    columns:
+        description: >
+          Conversions gemäß Google Ads - sollte nicht verwendet werden. 
+          Für Reportings werden Werte direkt aus Google Analytics genutzt.   
+      - name: conversions_value
+        description: '{{ doc("unused_columns") }}'
+      - name: cost
+        description: '{{ doc("cost") }}'
+      - name: device
+        description: '{{ doc("device") }}'
       - name: id
         description: Kampagnen-ID Google, wichtigster Sekundärschlüssel
         tests:
           - not_null
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: interaction_event_types
+        description: '{{ doc("unused_columns") }}'
+      - name: interactions
+        description: '{{ doc("unused_columns") }}'
+      - name: view_through_conversions
+        description: '{{ doc("unused_columns") }}'
+      - name: active_view_viewability
+        description: '{{ doc("unused_columns") }}'
+      - name: active_view_viewability
+        description: '{{ doc("unused_columns") }}'
+      
+  - name: stg_google_ads_campaign_history
+    description: '{{ doc("campaign_history") }}'
+    columns:
+      - name: _fivetran_start
+        description: '{{ doc("fivetran") }}'
+      - name: id
+        description: Kampagnen-ID Google, wichtigster Sekundärschlüssel
+        tests:
+          - not_null
+      - name: _fivetran_active
+        description: '{{ doc("fivetran") }}'
+      - name: _fivetran_end
+        description: '{{ doc("fivetran") }}'
+      - name: _fivetran_synced
+        description: '{{ doc("fivetran") }}'
+      - name: ad_serving_optimization_status
+        description: '{{ doc("unused_columns") }}'
+      - name: advertising_channel_subtype
+        description: '{{ doc("unused_columns") }}'
+      - name: advertising_channel_type
+        description: '{{ doc("unused_columns") }}'
+      - name: base_campaign_id
+        description: '{{ doc("unused_columns") }}'
+      - name: customer_id
+        description: '{{ doc("ad_account") }}'
+      - name: end_date
+        description: '{{ doc("unused_columns") }}'
+      - name: experiment_type
+        description: '{{ doc("unused_columns") }}'
+      - name: final_url_suffix
+        description: '{{ doc("unused_columns") }}'
+      - name: frequency_caps
+        description: '{{ doc("unused_columns") }}'
+      - name: campaign
+        description: '{{ doc("campaign_name") }}'
+      - name: optimization_score
+        description: '{{ doc("unused_columns") }}'
+      - name: payment_mode
+        description: '{{ doc("unused_columns") }}'
+      - name: serving_status
+        description: '{{ doc("unused_columns") }}'
+      - name: start_date
+        description: '{{ doc("unused_columns") }}'
+      - name: status
+        description: '{{ doc("unused_columns") }}'
+      - name: tracking_url_template
+        description: '{{ doc("unused_columns") }}'
+      - name: updated_at
+        description: '{{ doc("unused_columns") }}'
+      - name: vanity_pharma_display_url_mode
+        description: '{{ doc("unused_columns") }}'
+      - name: vanity_pharma_text
+        description: '{{ doc("unused_columns") }}'
+      - name: video_brand_safety_suitability
+        description: '{{ doc("unused_columns") }}'
+      - name: Source
+        description: '{{ doc("source_medium_manual") }}'
+      - name: Medium
+        description: '{{ doc("source_medium_manual") }}'
       - name: Partner
-        description: Ist immer EVO, darf keine leeren Werte enthalten
+        description: '{{ doc("Partner") }}'
         test:
           - not_null
       - name: CampaignID
@@ -32,14 +125,14 @@ models:
 
 #Bing Ads
   - name: stg_bing_ads_campaign_history
-    description: Enthält die Änderungshistorie der Kampagnen
+    description: '{{ doc("campaign_history") }}'
     columns:
       - name: id
         description: Kampagnen-ID Microsoft, wichtigster Sekundärschlüssel
         tests:
           - not_null
       - name: Partner
-        description: Ist immer EVO, darf keine leeren Werte enthalten
+        description: '{{ doc("Partner") }}'
         test:
           - not_null
       - name: CampaignID
@@ -49,7 +142,10 @@ models:
 
 #Google Analytics
   - name: stg_google_analytics_352128287
-    description: Enthält alle GA4-Events in Tabellenform ohne Schachtelung. Bereinigt fehlerhafte Events ohne Session-ID. Offzielle Doku Google > https://support.google.com/analytics/answer/7029846?hl=en#zippy=
+    description: >
+      Enthält alle GA4-Events in Tabellenform ohne Schachtelung. 
+      Bereinigt fehlerhafte Events ohne Session-ID. 
+      Offzielle Doku Google: https://support.google.com/analytics/answer/7029846?hl=en#zippy=
     columns:
       - name: ltv_revenue
         description: User Lifetime Value
