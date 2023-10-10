@@ -1,0 +1,13 @@
+bq_evo:
+  outputs:
+    dev:
+      dataset: test_dbt
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: europe-west3
+      method: oauth
+      priority: interactive
+      project: oss-big-query-dashboard-prod
+      threads: 4
+      type: bigquery
+  target: dev
