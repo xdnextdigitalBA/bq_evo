@@ -7,16 +7,18 @@ on:
   # Triggers the workflow manually from GUI
   workflow_dispatch:
 
+env:
+	ENV_CODE: ${{vars.ENV_CODE}}
+	PROJ_CODE: ${{vars.PROJ_CODE}}
+	BQ_ACCOUNT: ${{ secrets.BQ_ACCOUNT }}
+	BQ_PWD: ${{ secrets.BQ_PWD }}
+
+
 jobs:
   # Build job
   build:
 		runs-on: ubuntu-latest
 		environment: dev
-		env:
-			ENV_CODE: ${{vars.ENV_CODE}}
-			PROJ_CODE: ${{vars.PROJ_CODE}}
-			BQ_ACCOUNT: ${{ secrets.SNOWSQL_ACCOUNT }}
-			BQ_PWD: ${{ secrets.SNOWSQL_PWD }}
 
 		steps:
 			- name: "Step 01 - Checkout current branch"
