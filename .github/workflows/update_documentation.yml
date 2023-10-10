@@ -16,8 +16,21 @@ jobs:
     environment: dev
     
     steps:
-      - name: "Step 00 - Prüfe Version"
-        run: node --version
       - name: "Step 01 - Checkout current branch"
         id: step-01
         uses: actions/checkout@v3
+      - name: "Step 02 - Install dbt"
+        id: step-02
+        run: pip3 install dbt-core dbt-bigquery
+      - name: "Step 03 - Verify dbt"
+        id: step-03
+        run: dbt --version
+      - name: "Step 04 - Compile dbt"
+        id: step-04
+        working-directory: ./dbt-docs/dbt
+        run: |
+          ls -ltra
+          export DBT_PROFILES_DIR=$PWD
+          dbt deps
+          dbt debug -t $ENV_CODE
+          dbt compile -t $ENV_CODE
