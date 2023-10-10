@@ -37,4 +37,7 @@ Tags werden primär auf der Ebene der "Mart-Modelle" verwendet. Sie dienen der s
 - **performancereporting:** Dient als Input für Performancereporting der NDG
 - **vermarktungsdashboard:** Dient als Input für das Vermarktungsdashboard der NDG
 
+# Weitere Informationen
+-
+
 {% enddocs %}
