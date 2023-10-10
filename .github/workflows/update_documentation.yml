@@ -1,0 +1,23 @@
+name: "dbt dev pipeline"
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+      ENV_CODE: ${{vars.ENV_CODE}}
+			PROJ_CODE: ${{vars.PROJ_CODE}}
+			BQ_ACCOUNT: ${{ secrets.SNOWSQL_ACCOUNT }}
+			BQ_PWD: ${{ secrets.SNOWSQL_PWD }}
+    
+    steps:
+      - name: "Step 00 - Prüfe Version"
+        run: node --version
+        run: npm --version
+      - name: "Step 01 - Checkout current branch"
+        id: step-01
+        uses: actions/checkout@v3
