@@ -9,6 +9,10 @@ env:
   PROJ_CODE: ${{ vars.PROJ_CODE }}
   BQ_ACCOUNT: ${{ secrets.BQ_ACCOUNT }}
   BQ_PWD: ${{ secrets.BQ_PWD }}
+  BQ_TOKEN: ${{ secrets.BQ_TOKEN }}
+  BQ_CLIENTID: ${{ secrets.BQ_CLIENTID }}
+  BQ_CLIENTSECRET: ${{ secrets.BQ_CLIENTSECRET }}
+  BQ_TOKENURI: ${{ secrets.BQ_TOKENURI }}
 
 jobs:
   build:
@@ -19,12 +23,6 @@ jobs:
       - name: "Step 01 - Checkout current branch"
         id: step-01
         uses: actions/checkout@v3
-      - name: "Step 02 - Install gcloud CLI"
-        id: step-02a
-        run: |
-          echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-          curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-          sudo apt-get update && sudo apt-get install google-cloud-cli
       - name: "Step 02 - Install dbt"
         id: step-02
         run: pip3 install dbt-core dbt-bigquery

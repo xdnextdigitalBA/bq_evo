@@ -5,7 +5,11 @@ bq_evo:
       job_execution_timeout_seconds: 300
       job_retries: 1
       location: europe-west3
-      method: oauth
+      method: oauth-secrets
+      refresh_token: 1//09JDYgpKpK9JgCgYIARAAGAkSNwF-L9Ir633k4PC3rGzbVe5jYZBmVb3-nwxjVX_WlmjFx99QEPAb89gELk7RqrsHH1dGzOSfWls
+      client_id: 764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com
+      client_secret: d-FL95Q19q7MQmFpd7hHD0Ty
+      token_uri: ya29.a0AfB_byA1gg0sjRgZ6a7cDJXU4cZYeiwiUIZUxgcAY4QL7ttqwpqfoAtQNORKNJLUUDe8UhXkUqq325I-8SnnBSeQ_x7fPONvY3BBXTA0UNL5AXcCuaEkLNWC9GX_Xq_6i3RuLh46tGolPDIEITrNAlnium1rjKhkcYDK-RtHBQaCgYKAf8SARISFQGOcNnCXTs1hIupNfIS0Mfwb-mnqw0177      
       priority: interactive
       project: oss-big-query-dashboard-prod
       threads: 4
