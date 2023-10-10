@@ -13,7 +13,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    #environment: dev
+    environment: dev
     
     steps:
       - name: "Step 01 - Checkout current branch"
