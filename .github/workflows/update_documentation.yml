@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      ENV_CODE: ${{vars.ENV_CODE}}
+      ENV_CODE: dev #${{vars.ENV_CODE}}
 			PROJ_CODE: ${{vars.PROJ_CODE}}
 			BQ_ACCOUNT: ${{ secrets.SNOWSQL_ACCOUNT }}
 			BQ_PWD: ${{ secrets.SNOWSQL_PWD }}
