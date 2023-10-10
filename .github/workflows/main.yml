@@ -5,8 +5,7 @@ on:
   # Triggers the workflow on push to main branch
   push:
 	branches:
-	 	- main
-		- bq_evo
+		- origin/bq_evo
   # Triggers the workflow manually from GUI
   workflow_dispatch:
 
