@@ -3,7 +3,7 @@ name: "dbt dev pipeline"
 # Triggers
 on:
   # Triggers the workflow on push to main branch
-  push:
+  # push:
   # Triggers the workflow manually from GUI
   workflow_dispatch:
 
@@ -42,6 +42,7 @@ jobs:
 				dbt deps
 				dbt debug -t $ENV_CODE
 				dbt compile -t $ENV_CODE
+
 
 			- name: "Step 05 - Generate dbt docs"
 			id: step-05

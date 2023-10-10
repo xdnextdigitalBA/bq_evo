@@ -1,7 +1,7 @@
 name: "dbt dev pipeline"
 
 on:
-  push:
+  # push:
   workflow_dispatch:
 
 env:
@@ -19,6 +19,12 @@ jobs:
       - name: "Step 01 - Checkout current branch"
         id: step-01
         uses: actions/checkout@v3
+      - name: "Step 02 - Install gcloud CLI"
+        id: step-02a
+        run: |
+          echo "deb [signed-by=/usr/share/keyrings/cloud.google.asc] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+          curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+          sudo apt-get update && sudo apt-get install google-cloud-cli
       - name: "Step 02 - Install dbt"
         id: step-02
         run: pip3 install dbt-core dbt-bigquery
