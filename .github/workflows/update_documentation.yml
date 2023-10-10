@@ -18,7 +18,6 @@ jobs:
     steps:
       - name: "Step 00 - Prüfe Version"
         run: node --version
-        run: npm --version
       - name: "Step 01 - Checkout current branch"
         id: step-01
         uses: actions/checkout@v3
