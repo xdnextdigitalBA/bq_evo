@@ -6,7 +6,7 @@ on:
 
 env:
   ENV_CODE: ${{ vars.ENV_CODE }}
-  PROJ_CODE: ${{ vars.PROJ_CODE }}
+  #PROJ_CODE: ${{ vars.PROJ_CODE }}
   BQ_ACCOUNT: ${{ secrets.BQ_ACCOUNT }}
   BQ_PWD: ${{ secrets.BQ_PWD }}
 
