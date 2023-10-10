@@ -1,0 +1,11 @@
+on: 
+  push
+  workflow_dispatch
+
+jobs:
+  first_job:
+    name: test_job
+    runs-on: ubuntu-latest
+    steps:
+      - run: node --version
+      - run: npm --version
