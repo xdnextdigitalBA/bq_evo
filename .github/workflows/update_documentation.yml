@@ -6,14 +6,14 @@ on:
 
 env:
   ENV_CODE: ${{ vars.ENV_CODE }}
-  #PROJ_CODE: ${{ vars.PROJ_CODE }}
+  PROJ_CODE: ${{ vars.PROJ_CODE }}
   BQ_ACCOUNT: ${{ secrets.BQ_ACCOUNT }}
   BQ_PWD: ${{ secrets.BQ_PWD }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: dev
+    #environment: dev
     
     steps:
       - name: "Step 01 - Checkout current branch"
@@ -27,7 +27,7 @@ jobs:
         run: dbt --version
       - name: "Step 04 - Compile dbt"
         id: step-04
-        working-directory: ./dbt-docs/dbt
+        working-directory: ./dbt
         run: |
           ls -ltra
           export DBT_PROFILES_DIR=$PWD
