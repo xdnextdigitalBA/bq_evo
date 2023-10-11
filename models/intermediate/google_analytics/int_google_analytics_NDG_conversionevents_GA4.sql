@@ -19,7 +19,7 @@ _conversions_NDG as(
   WHERE (
     event_name = 'lead_form_evo_solar_lp' OR
     event_name = 'evo_solar_pva_check_sent_available' OR
-    event_name = 'contact_form_button' OR
+    (event_name = 'contact_form_button' AND page_location LIKE '%pv-aktion%') OR
     event_name = 'click_online_application' OR
     event_name = 'oss_registration_doi' OR
     event_name = 'click_tarifrechnernutzung' OR
