@@ -9,10 +9,10 @@ env:
   PROJ_CODE: ${{ vars.PROJ_CODE }}
   BQ_ACCOUNT: ${{ secrets.BQ_ACCOUNT }}
   BQ_PWD: ${{ secrets.BQ_PWD }}
-  BQ_TOKEN: ${{ secrets.BQ_TOKEN }}
-  BQ_CLIENTID: ${{ secrets.BQ_CLIENTID }}
-  BQ_CLIENTSECRET: ${{ secrets.BQ_CLIENTSECRET }}
-  BQ_TOKENURI: ${{ secrets.BQ_TOKENURI }}
+  DBT_ENV_SECRET_BQ_TOKEN: ${{ secrets.BQ_TOKEN }}
+  DBT_ENV_SECRET_BQ_CLIENTID: ${{ secrets.BQ_CLIENTID }}
+  DBT_ENV_SECRET_BQ_CLIENTSECRET: ${{ secrets.BQ_CLIENTSECRET }}
+  DBT_ENV_SECRET_BQ_TOKENURI: ${{ secrets.BQ_TOKENURI }}
 
 jobs:
   build:
