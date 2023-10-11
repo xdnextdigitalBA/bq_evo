@@ -1,3 +1,9 @@
+env:
+  BQ_TOKEN: ${{ secrets.BQ_TOKEN }}
+  BQ_CLIENTID: ${{ secrets.BQ_CLIENTID }}
+  BQ_CLIENTSECRET: ${{ secrets.BQ_CLIENTSECRET }}
+  BQ_TOKENURI: ${{ secrets.BQ_TOKENURI }}
+
 bq_evo:
   outputs:
     dev:
@@ -6,10 +12,10 @@ bq_evo:
       job_retries: 1
       location: europe-west3
       method: oauth-secrets
-      refresh_token: 1//09JDYgpKpK9JgCgYIARAAGAkSNwF-L9Ir633k4PC3rGzbVe5jYZBmVb3-nwxjVX_WlmjFx99QEPAb89gELk7RqrsHH1dGzOSfWls
-      client_id: 764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com
-      client_secret: d-FL95Q19q7MQmFpd7hHD0Ty
-      token_uri: ya29.a0AfB_byA1gg0sjRgZ6a7cDJXU4cZYeiwiUIZUxgcAY4QL7ttqwpqfoAtQNORKNJLUUDe8UhXkUqq325I-8SnnBSeQ_x7fPONvY3BBXTA0UNL5AXcCuaEkLNWC9GX_Xq_6i3RuLh46tGolPDIEITrNAlnium1rjKhkcYDK-RtHBQaCgYKAf8SARISFQGOcNnCXTs1hIupNfIS0Mfwb-mnqw0177      
+      refresh_token: ${{ secrets.BQ_TOKEN }}
+      client_id: ${{ secrets.BQ_CLIENTID }}
+      client_secret: ${{ secrets.BQ_CLIENTSECRET }}
+      token_uri: ${{ secrets.BQ_TOKENURI }}
       priority: interactive
       project: oss-big-query-dashboard-prod
       threads: 4
