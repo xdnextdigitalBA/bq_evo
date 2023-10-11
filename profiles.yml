@@ -1,9 +1,3 @@
-env:
-  BQ_TOKEN: ${{ secrets.BQ_TOKEN }}
-  BQ_CLIENTID: ${{ secrets.BQ_CLIENTID }}
-  BQ_CLIENTSECRET: ${{ secrets.BQ_CLIENTSECRET }}
-  BQ_TOKENURI: ${{ secrets.BQ_TOKENURI }}
-
 bq_evo:
   outputs:
     dev:
@@ -12,10 +6,10 @@ bq_evo:
       job_retries: 1
       location: europe-west3
       method: oauth-secrets
-      refresh_token: ${{ secrets.BQ_TOKEN }}
-      client_id: ${{ secrets.BQ_CLIENTID }}
-      client_secret: ${{ secrets.BQ_CLIENTSECRET }}
-      token_uri: ${{ secrets.BQ_TOKENURI }}
+      refresh_token: "{{ env_var('secrets.BQ_TOKEN') }}"
+      client_id: "{{ env_var('secrets.BQ_CLIENTID') }}"
+      client_secret: "{{ env_var('secrets.BQ_CLIENTSECRET') }}"
+      token_uri: "{{ env_var('secrets.BQ_TOKENURI') }}"
       priority: interactive
       project: oss-big-query-dashboard-prod
       threads: 4
