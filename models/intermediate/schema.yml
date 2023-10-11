@@ -51,7 +51,9 @@ models:
         tests:
           - not_null
   - name: int_google_analytics_NDG_conversionevents_GA4
-    description: Enthält alle relevanten Conversionevents aus Google Analytics 4 für NDG-Vermarktung. Inklusive aller E-Commerce-Events (ohne Metainformationen).
+    description: |
+      Enthält alle relevanten Conversionevents aus Google Analytics 4 für NDG-Vermarktung. Inklusive aller E-Commerce-Events (ohne Metainformationen).
+      Für das Conversion-Event 'contact_form_button' wird nur die Landingpage evo-ag.de/pv-aktion gefiltert.
     columns:
       - name: CampaignID
         description: '{{ doc("campaignID") }}'

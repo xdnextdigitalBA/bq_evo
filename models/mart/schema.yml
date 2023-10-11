@@ -34,7 +34,9 @@ models:
         tests:
           - not_null
   - name: mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized
-    description: Enthält alle Conversiondaten bis einschl. 04.06.2023 aus Unisversal Analytics, alle Conversions ab 05.06.2023 aus Google Analytics 4.
+    description: |
+      Enthält alle Conversiondaten bis einschl. 04.06.2023 aus Unisversal Analytics, alle Conversions ab 05.06.2023 aus Google Analytics 4.
+      Das Zielvorhaben 'contact_form_button' ist hier nur für die Landingpage evo-ag.de/pv-aktion gefiltert.
     columns:
       - name: CampaignID
         description: '{{ doc("campaignID") }}'
