@@ -6,10 +6,10 @@ bq_evo:
       job_retries: 1
       location: europe-west3
       method: oauth-secrets
-      refresh_token: "{{ env_var('secrets.BQ_TOKEN') }}"
-      client_id: "{{ env_var('secrets.BQ_CLIENTID') }}"
-      client_secret: "{{ env_var('secrets.BQ_CLIENTSECRET') }}"
-      token_uri: "{{ env_var('secrets.BQ_TOKENURI') }}"
+      refresh_token: "{{ env_var('DBT_ENV_SECRET_BQ_TOKEN') }}"
+      client_id: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENTID') }}"
+      client_secret: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENTSECRET') }}"
+      token_uri: "{{ env_var('DBT_ENV_SECRET_BQ_TOKENURI') }}"
       priority: interactive
       project: oss-big-query-dashboard-prod
       threads: 4
