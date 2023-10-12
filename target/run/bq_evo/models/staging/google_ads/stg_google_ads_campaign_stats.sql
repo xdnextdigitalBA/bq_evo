@@ -2,7 +2,7 @@
 
   create or replace view `oss-big-query-dashboard-prod`.`staging`.`stg_google_ads_campaign_stats`
   OPTIONS(
-      description="""Enth\u00e4lt alle Performancestatistiken der Google Ads Kampagnen"""
+      description="""Enth\u00e4lt die wichtigsten Performancestatistiken auf Kampagnenebene."""
     )
   as WITH _raw AS(
     SELECT * 

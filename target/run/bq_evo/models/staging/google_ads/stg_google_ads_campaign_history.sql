@@ -2,7 +2,7 @@
 
   create or replace view `oss-big-query-dashboard-prod`.`staging`.`stg_google_ads_campaign_history`
   OPTIONS(
-      description="""Enth\u00e4lt die \u00c4nderungshistorie der Kampagnen"""
+      description="""\u00c4nderungshistorie der Kampagnen. Jede Kampagne kann mehrfach auftauchen."""
     )
   as WITH _raw AS(
   SELECT *

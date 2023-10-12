@@ -2,7 +2,7 @@
 
   create or replace view `oss-big-query-dashboard-prod`.`staging`.`stg_google_analytics_352128287`
   OPTIONS(
-      description="""Enth\u00e4lt alle GA4-Events in Tabellenform ohne Schachtelung. Bereinigt fehlerhafte Events ohne Session-ID. Offzielle Doku Google > https://support.google.com/analytics/answer/7029846?hl=en#zippy="""
+      description="""Enth\u00e4lt alle GA4-Events in Tabellenform ohne Schachtelung.  Bereinigt fehlerhafte Events ohne Session-ID.  Offzielle Doku Google: https://support.google.com/analytics/answer/7029846?hl=en#zippy=\n"""
     )
   as WITH _source AS(
   SELECT

@@ -5,13 +5,23 @@ bq_evo:
       job_execution_timeout_seconds: 300
       job_retries: 1
       location: europe-west3
-      method: oauth-secrets
-      refresh_token: "{{ env_var('DBT_ENV_SECRET_BQ_TOKEN') }}"
-      client_id: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENTID') }}"
-      client_secret: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENTSECRET') }}"
-      token_uri: "{{ env_var('DBT_ENV_SECRET_BQ_TOKENURI') }}"
+      method: service-account-json
       priority: interactive
       project: oss-big-query-dashboard-prod
       threads: 4
       type: bigquery
+      
+      # These fields come from the service account json keyfile
+      keyfile_json:
+        type: service_account
+        project_id: oss-big-query-dashboard-prod
+        private_key_id: "{{ env_var('DBT_ENV_SECRET_BQ_PRKEY_ID') }}"
+        private_key: "{{ env_var('DBT_ENV_SECRET_BQ_PRKEY') }}"
+        client_email: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENT_MAIL') }}"
+        client_id: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENT_ID') }}"
+        auth_uri: https://accounts.google.com/o/oauth2/auth
+        token_uri: https://oauth2.googleapis.com/token
+        auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+        client_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_BQ_CLIENT_CERT_URL') }}"
+
   target: dev

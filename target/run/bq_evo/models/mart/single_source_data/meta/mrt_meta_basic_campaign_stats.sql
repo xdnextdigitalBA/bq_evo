@@ -8,7 +8,7 @@
     
 
     OPTIONS(
-      description="""Enth\u00e4lt die Performancedaten der Metakampagnen."""
+      description="""Enth\u00e4lt alle Vermarktungsstatistiken f\u00fcr das Performancereporting. Enth\u00e4lt jedoch keine Conversioninformationen."""
     )
     as (
       

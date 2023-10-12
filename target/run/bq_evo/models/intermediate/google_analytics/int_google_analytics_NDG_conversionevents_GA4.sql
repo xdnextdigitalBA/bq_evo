@@ -2,7 +2,7 @@
 
   create or replace view `oss-big-query-dashboard-prod`.`intermediate`.`int_google_analytics_NDG_conversionevents_GA4`
   OPTIONS(
-      description="""Enth\u00e4lt alle relevanten Conversionevents aus Google Analytics 4 f\u00fcr NDG-Vermarktung. Inklusive aller E-Commerce-Events (ohne Metainformationen)."""
+      description="""Enth\u00e4lt alle relevanten Conversionevents aus Google Analytics 4 f\u00fcr NDG-Vermarktung. Inklusive aller E-Commerce-Events (ohne Metainformationen).\nF\u00fcr das Conversion-Event 'contact_form_button' wird nur die Landingpage evo-ag.de/pv-aktion gefiltert.\n"""
     )
   as WITH _raw AS(
   SELECT *
@@ -25,7 +25,7 @@ _conversions_NDG as(
   WHERE (
     event_name = 'lead_form_evo_solar_lp' OR
     event_name = 'evo_solar_pva_check_sent_available' OR
-    event_name = 'contact_form_button' OR
+    (event_name = 'contact_form_button' AND page_location LIKE '%pv-aktion%') OR
     event_name = 'click_online_application' OR
     event_name = 'oss_registration_doi' OR
     event_name = 'click_tarifrechnernutzung' OR
