@@ -156,6 +156,16 @@ models:
     columns:
       - name: CampaignID
         description: '{{ doc("campaignID") }}'
+  - name: stg_google_analytics_historic_goal_conversions
+    description: Enthält alle historischen Zielvorhaben-Abschlüsse aus Universal Analytics / GA3
+    columns:
+      - name: CampaignID
+        description: '{{ doc("campaignID") }}'
+  - name: stg_google_analytics_historic_goal_transactions
+    description: Enthält alle historischen Transaktionen aus Universal Analytics / GA3
+    columns:
+      - name: CampaignID
+        description: '{{ doc("campaignID") }}'
 
 #Meta
   - name: stg_meta_campaign_stats
