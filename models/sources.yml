@@ -7,7 +7,7 @@ version: 2
 sources:
 #GA4-Daten
   - name: analytics_352128287
-    description: "alle GA4 Daten NEW"
+    description: "alle GA4 Daten EVO"
     project: oss-big-query-dashboard-prod  
     dataset: analytics_352128287 
     tables:
@@ -16,7 +16,7 @@ sources:
 
 #Google Ads
   - name: google_ads
-    description: "alle Google Ads Daten Klick & NEW"
+    description: "alle Google Ads Daten EVO"
     project: oss-big-query-dashboard-prod 
     dataset: google_ads
     tables:
