@@ -5,10 +5,10 @@ WITH _historic_ua_campaigns AS(
 
 ga4_campaigns AS(
     SELECT 
-        MAX(Campaign),
-        MAX(Partner),
-        MAX(Source),
-        MAX(Medium),
+        MAX(Campaign) as Campaign,
+        MAX(Partner) as Partner,
+        MAX(Source) as Source,
+        MAX(Medium) as Medium,
         CampaignID
     FROM {{ref('int_google_analytics_all_events')}}
     GROUP BY 5
