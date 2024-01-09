@@ -1,3 +1,7 @@
+{{ config(
+    tags=["daily"]
+) }}
+
 WITH _historic_ua_campaigns AS(
     SELECT *
     FROM {{ref('stg_google_analytics_historic_campaigns')}}

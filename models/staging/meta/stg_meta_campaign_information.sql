@@ -1,3 +1,7 @@
+{{ config(
+    tags=["daily"]
+) }}
+
 WITH _raw AS(
     SELECT *
     FROM {{ source('facebook_ads', 'fb_campaign_information') }}

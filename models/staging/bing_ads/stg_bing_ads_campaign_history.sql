@@ -1,3 +1,7 @@
+{{ config(
+    tags=["daily"]
+) }}
+
 WITH _raw AS(
     SELECT *
     FROM {{ source('bingads', 'campaign_history') }}

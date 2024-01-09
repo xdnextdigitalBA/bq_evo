@@ -1,15 +1,24 @@
 jobs:
 # Give each job a unique name. The name will be displayed in the Fivetran dashboard once your jobs are imported.
 # Job names must be unique.
- - name: daily
-   targetName: dev # The name of the target that will be used when running the job. If it's not specified, the target will be named 'prod'.
-   schedule: 0 12 * * * # Define when this job should run, using cron format. This example will run every day at 12:00pm (according to your warehouse timezone). For help with cron formatting, visit https://crontab.guru/.
-   # Optional timeout that limits the maximum run time of the job. You can specify only hours, only minutes or both, for example "6h", "2h30m", "30m"
-   # The value can be in range from 30 minutes to 24 hours.
-   # If timeout is not specified, the job will be terminated after 24 hours.
-   timeout: 2h30m
+
+ - name: Täglich
+   targetName: dev
+   schedule: '0 5 */1 * *' # Jeden Morgen um 05:00 Uhr
    steps:
-     - name: run models # Give each step in your job a name. This will enable you to track the steps in the logs.
-       command: dbt run # Enter the dbt command that should run in this step. This example will run all your models. For a list of available commands visit https://docs.getdbt.com/reference/model-selection-syntax/.
-     - name: test models
-       command: dbt test # This example will run all your tests.
+     - name: Step 01 - Staging
+       command: dbt run -m staging,tag:daily
+     - name: Step 02 - Intermediate
+       command: dbt run -m intermediate,tag:daily
+     - name: Step 03 - Mart
+       command: dbt run -m mart,tag:daily
+ - name: Alle 3 Stunden
+   targetName: dev
+   schedule: '0 */3 * * *' # The example will run every 1 hours. Note that the cron string is quoted as otherwise it will be treated as invalid alias node (see https://yaml.org/spec/1.2/spec.html#*%20alias// for details)
+   steps:
+     - name: Step 01 - Staging
+       command: dbt run -m staging --exclude tag:daily tag:historic
+     - name: Step 02 - Intermediate
+       command: dbt run -m intermediate --exclude tag:daily tag:historic
+     - name: Step 03 - Mart
+       command: dbt run -m mart --exclude tag:daily tag:historic

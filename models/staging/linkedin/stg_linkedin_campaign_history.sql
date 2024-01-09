@@ -1,3 +1,7 @@
+{{ config(
+    tags=["daily"]
+) }}
+
 WITH _raw AS(
     SELECT *
     FROM {{ source('linkedin_ads', 'campaign_history') }}

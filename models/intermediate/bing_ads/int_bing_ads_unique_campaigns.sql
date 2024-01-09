@@ -1,3 +1,7 @@
+{{ config(
+    tags=["daily"]
+) }}
+
 WITH _raw AS(
     SELECT *
     FROM {{ ref('stg_bing_ads_campaign_history')}}

@@ -1,7 +1,7 @@
 {{
   config(
     materialized='table',
-    tags=["performancereporting", "vermarktungsdashboard"]
+    tags=["performancereporting", "vermarktungsdashboard", "daily"]
     )
 }}
 

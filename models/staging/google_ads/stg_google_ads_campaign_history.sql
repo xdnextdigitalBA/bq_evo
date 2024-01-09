@@ -1,3 +1,7 @@
+{{ config(
+    tags=["daily"]
+) }}
+
 WITH _raw AS(
   SELECT *
   FROM {{ source('google_ads', 'campaign_history')}}
