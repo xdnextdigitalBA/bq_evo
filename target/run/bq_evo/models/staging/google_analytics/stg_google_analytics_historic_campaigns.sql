@@ -4,7 +4,9 @@
   OPTIONS(
       description="""Enth\u00e4lt alle historischen Kampagnen aus Universal Analytics / GA3"""
     )
-  as WITH _raw AS(
+  as 
+
+WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`manual_data_upload`.`universal_analytics_historic_campaigns`
 ),

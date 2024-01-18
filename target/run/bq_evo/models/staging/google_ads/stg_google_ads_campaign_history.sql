@@ -4,7 +4,9 @@
   OPTIONS(
       description="""\u00c4nderungshistorie der Kampagnen. Jede Kampagne kann mehrfach auftauchen."""
     )
-  as WITH _raw AS(
+  as 
+
+WITH _raw AS(
   SELECT *
   FROM `oss-big-query-dashboard-prod`.`google_ads`.`campaign_history`
 ),

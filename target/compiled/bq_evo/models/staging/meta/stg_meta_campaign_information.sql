@@ -1,3 +1,5 @@
+
+
 WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`facebook_ads`.`fb_campaign_information`

@@ -4,7 +4,9 @@
   OPTIONS(
       description="""Enth\u00e4lt alle Kampagneninformationen der Metakampagnen."""
     )
-  as WITH _raw AS(
+  as 
+
+WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`linkedin_ads`.`campaign_history`
 ),

@@ -5,6 +5,12 @@ WITH _raw AS(
     FROM `oss-big-query-dashboard-prod`.`intermediate`.`int_google_analytics_all_events`
 
     
+
+      WHERE
+      --Update table for the past seven days + today
+      event_date >= current_date()-7
+        
+    
 ),
 
 sessions_by_campaign AS(

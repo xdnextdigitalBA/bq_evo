@@ -4,7 +4,9 @@
   OPTIONS(
       description="""Enth\u00e4lt alle Kampagneninformationen der Metakampagnen. Inklusive Informationen \u00fcber zugeh\u00f6rige Anzeigengruppen und Anzeigen."""
     )
-  as WITH _raw AS(
+  as 
+
+WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`facebook_ads`.`fb_campaign_information`
 ),

@@ -1,3 +1,5 @@
+
+
 WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`bingads`.`campaign_history`

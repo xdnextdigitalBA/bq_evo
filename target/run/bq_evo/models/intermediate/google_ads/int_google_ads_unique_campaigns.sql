@@ -4,7 +4,9 @@
   OPTIONS(
       description="""Enth\u00e4lt eine \u00dcbersicht aller Kampagnen ohne historische Informationen. Dient als einfache Datenbank der wichtigsten Metainfos der Kampagnen. Jede Kampagne hat genau einen Eintrag."""
     )
-  as WITH _raw AS(
+  as 
+
+WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`staging`.`stg_google_ads_campaign_history`
 ),

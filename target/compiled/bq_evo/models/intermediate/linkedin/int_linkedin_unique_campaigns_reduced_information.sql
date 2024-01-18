@@ -1,3 +1,5 @@
+
+
 WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`staging`.`stg_linkedin_campaign_history`

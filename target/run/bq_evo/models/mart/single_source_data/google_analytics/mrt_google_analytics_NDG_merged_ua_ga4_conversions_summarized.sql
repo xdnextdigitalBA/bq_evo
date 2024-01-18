@@ -1,17 +1,13 @@
-
+-- back compat for old kwarg name
   
+  
+        
     
 
-    create or replace table `oss-big-query-dashboard-prod`.`mart`.`mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized`
-      
-    
     
 
-    OPTIONS(
-      description="""Enth\u00e4lt alle Conversiondaten bis einschl. 04.06.2023 aus Unisversal Analytics, alle Conversions ab 05.06.2023 aus Google Analytics 4.\nDas Zielvorhaben 'contact_form_button' ist hier nur f\u00fcr die Landingpage evo-ag.de/pv-aktion gefiltert.\n"""
-    )
-    as (
-      
+    merge into `oss-big-query-dashboard-prod`.`mart`.`mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized` as DBT_INTERNAL_DEST
+        using (
 
 WITH ga4_conversions AS(
     SELECT *
@@ -48,5 +44,15 @@ _final AS(
 )
 
 SELECT * FROM _final
-    );
-  
+        ) as DBT_INTERNAL_SOURCE
+        on (FALSE)
+
+    
+
+    when not matched then insert
+        (`Date`, `ZielvorhabenName`, `ZielvorhabenID`, `CampaignID`, `Source`, `Medium`, `Partner`, `Keyword`, `KeywordMatchType`, `Conversions`)
+    values
+        (`Date`, `ZielvorhabenName`, `ZielvorhabenID`, `CampaignID`, `Source`, `Medium`, `Partner`, `Keyword`, `KeywordMatchType`, `Conversions`)
+
+
+    

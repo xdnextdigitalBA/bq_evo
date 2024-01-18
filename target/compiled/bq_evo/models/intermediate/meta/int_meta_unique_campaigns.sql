@@ -1,3 +1,5 @@
+
+
 WITH _raw AS(
     SELECT *
     FROM `oss-big-query-dashboard-prod`.`staging`.`stg_meta_campaign_information`
