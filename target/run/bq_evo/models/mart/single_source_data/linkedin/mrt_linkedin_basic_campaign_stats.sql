@@ -1,39 +1,64 @@
--- back compat for old kwarg name
+
   
+    
+
+    create or replace table `oss-big-query-dashboard-prod`.`mart`.`mrt_linkedin_basic_campaign_stats`
+      
+    
+    
+
+    OPTIONS(
+      description="""Enth\u00e4lt alle Vermarktungsstatistiken f\u00fcr das Performancereporting. Enth\u00e4lt jedoch keine Conversioninformationen."""
+    )
+    as (
+      
+
+WITH _raw AS(
+  SELECT *
+  FROM `oss-big-query-dashboard-prod`.`intermediate`.`int_linkedin_campaign_stats_joined_campaign_names`
+
+    
+),
+
+_selected_columns AS(
+  SELECT 
+    Date,
+    Campaign,
+    
+    CampaignID,
+    Source,
+    Medium,
+    Partner,
+    '(not set)' as Keyword,
+    '(not set)' as KeywordMatchType,
+    
+    Impressions,
+    Clicks,
+    Cost
+
+  FROM _raw
+),
+
+_final_aggregation AS(
+  SELECT 
+    Date,
+    Campaign,
+    
+    MAX(CampaignID) as CampaignID,
+    MAX(Source) as Source,
+    MAX(Medium) as Medium,
+    MAX(Partner) as Partner,
+    MAX(Keyword) as Keyword,
+    MAX(KeywordMatchType) as KeywordMatchType,
+    
+    SUM(Impressions) as Impressions,
+    SUM(Clicks) as Clicks,
+    SUM(Cost) as Cost
+
+  FROM _selected_columns
+  GROUP BY 1,2
+)
+
+SELECT * FROM _final_aggregation
+    );
   
-        
-            
-                
-                
-            
-                
-                
-            
-        
-    
-
-    
-
-    merge into `oss-big-query-dashboard-prod`.`mart`.`mrt_linkedin_basic_campaign_stats` as DBT_INTERNAL_DEST
-        using (
-        select
-        * from `oss-big-query-dashboard-prod`.`mart`.`mrt_linkedin_basic_campaign_stats__dbt_tmp`
-        ) as DBT_INTERNAL_SOURCE
-        on (
-                    DBT_INTERNAL_SOURCE.Date = DBT_INTERNAL_DEST.Date
-                ) and (
-                    DBT_INTERNAL_SOURCE.Campaign = DBT_INTERNAL_DEST.Campaign
-                )
-
-    
-    when matched then update set
-        `Date` = DBT_INTERNAL_SOURCE.`Date`,`Campaign` = DBT_INTERNAL_SOURCE.`Campaign`,`CampaignID` = DBT_INTERNAL_SOURCE.`CampaignID`,`Source` = DBT_INTERNAL_SOURCE.`Source`,`Medium` = DBT_INTERNAL_SOURCE.`Medium`,`Partner` = DBT_INTERNAL_SOURCE.`Partner`,`Keyword` = DBT_INTERNAL_SOURCE.`Keyword`,`KeywordMatchType` = DBT_INTERNAL_SOURCE.`KeywordMatchType`,`Impressions` = DBT_INTERNAL_SOURCE.`Impressions`,`Clicks` = DBT_INTERNAL_SOURCE.`Clicks`,`Cost` = DBT_INTERNAL_SOURCE.`Cost`
-    
-
-    when not matched then insert
-        (`Date`, `Campaign`, `CampaignID`, `Source`, `Medium`, `Partner`, `Keyword`, `KeywordMatchType`, `Impressions`, `Clicks`, `Cost`)
-    values
-        (`Date`, `Campaign`, `CampaignID`, `Source`, `Medium`, `Partner`, `Keyword`, `KeywordMatchType`, `Impressions`, `Clicks`, `Cost`)
-
-
-    

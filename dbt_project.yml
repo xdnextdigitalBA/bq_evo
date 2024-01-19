@@ -43,5 +43,5 @@ models:
       +materialized: view
       +dataset: intermediate
     mart:
-      +materialized: incremental
+      +materialized: table
       +dataset: mart

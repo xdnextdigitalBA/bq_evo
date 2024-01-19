@@ -5,12 +5,6 @@ WITH _raw AS(
   FROM `oss-big-query-dashboard-prod`.`intermediate`.`int_google_ads_campaign_stats`
 
     
-
-      WHERE
-      --Update table for the past seven days + today
-      date >= current_date()-7
-        
-    
 ),
 
 _selected_columns AS(

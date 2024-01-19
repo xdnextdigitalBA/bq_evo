@@ -18,12 +18,15 @@ _conversions_NDG as(
   FROM _raw
   WHERE (
     event_name = 'lead_form_evo_solar_lp' OR
+    event_name = 'lead_form_evo_solar_pv_aktion' OR
     event_name = 'evo_solar_pva_check_sent_available' OR
     (event_name = 'contact_form_button' AND page_location LIKE '%pv-aktion%') OR
     event_name = 'click_online_application' OR
     event_name = 'oss_registration_doi' OR
     event_name = 'click_tarifrechnernutzung' OR
     event_name = 'conversion_solarrechner' OR
+    event_name = 'lead_form_heatpump_lp' OR 
+    event_name = 'evo_heatpump_check_sent_available' OR
     event_name = 'purchase'
   )
 

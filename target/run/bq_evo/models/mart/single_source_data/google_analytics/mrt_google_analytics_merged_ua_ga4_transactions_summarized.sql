@@ -1,13 +1,17 @@
--- back compat for old kwarg name
+
   
-  
-        
     
 
+    create or replace table `oss-big-query-dashboard-prod`.`mart`.`mrt_google_analytics_merged_ua_ga4_transactions_summarized`
+      
+    
     
 
-    merge into `oss-big-query-dashboard-prod`.`mart`.`mrt_google_analytics_merged_ua_ga4_transactions_summarized` as DBT_INTERNAL_DEST
-        using (
+    OPTIONS(
+      description="""Enth\u00e4lt alle aggregierten Transaktionen bis einschl. 04.06.2023 aus Unisversal Analytics, alle Conversions ab 05.06.2023 aus Google Analytics 4. Enth\u00e4lt keine Detailinformationen je Transaktion."""
+    )
+    as (
+      
 
 WITH _raw AS(
   SELECT 
@@ -36,10 +40,10 @@ _aggregation_on_day AS(
     MAX(Keyword) as Keyword,
     MAX(KeywordMatchType) as KeywordMatchType,
     MAX(Partner) as Partner,
-    CampaignID
+    MAX(CampaignID) as CampaignID
   FROM _raw
   WHERE Date >= '2023-06-05'
-  GROUP BY 1,2,3,4,5,10
+  GROUP BY 1,2,3,4,5
 ),
 
 evo_ecommerce_ua AS(
@@ -59,15 +63,5 @@ _final AS(
 )
 
 SELECT * FROM _final
-        ) as DBT_INTERNAL_SOURCE
-        on (FALSE)
-
-    
-
-    when not matched then insert
-        (`Date`, `Campaign`, `Medium`, `Source`, `ProductCategory`, `Transactions`, `Keyword`, `KeywordMatchType`, `Partner`, `CampaignID`)
-    values
-        (`Date`, `Campaign`, `Medium`, `Source`, `ProductCategory`, `Transactions`, `Keyword`, `KeywordMatchType`, `Partner`, `CampaignID`)
-
-
-    
+    );
+  

@@ -29,10 +29,10 @@ _aggregation_on_day AS(
     MAX(Keyword) as Keyword,
     MAX(KeywordMatchType) as KeywordMatchType,
     MAX(Partner) as Partner,
-    CampaignID
+    MAX(CampaignID) as CampaignID
   FROM _raw
   WHERE Date >= '2023-06-05'
-  GROUP BY 1,2,3,4,5,10
+  GROUP BY 1,2,3,4,5
 ),
 
 evo_ecommerce_ua AS(
