@@ -7,16 +7,24 @@ WITH _raw AS(
     FROM {{ ref('stg_google_ads_campaign_history')}}
 ),
 
+_give_rownumbers AS(
+    SELECT
+        *,
+        ROW_NUMBER() OVER(PARTITION BY id ORDER BY updated_at DESC) as rn
+    FROM _raw
+),
+
 _distinct_campaigns AS(
     SELECT
-        MAX(id) as id ,
-        MAX(campaign) as campaign,
-        MAX(Source) as Source,
-        MAX(Medium) as Medium,
-        MAX(Partner) as Partner,
+        id ,
+        campaign,
+        Source,
+        Medium,
+        Partner,
         CampaignID
-    FROM _raw
-    GROUP BY 6
+    FROM _give_rownumbers
+    WHERE
+        rn = 1
 ),
 
 _final AS(
