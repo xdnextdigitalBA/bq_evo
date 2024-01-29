@@ -79,13 +79,35 @@ models:
         description: '{{ doc("campaignID") }}'
         tests:
           - not_null 
+      - name: Campaign
+        description: '{{ doc("campaign_name") }}'
+      - name: Medium
+        description: '{{ doc("source_medium_manual") }}'
+      - name: Source
+        description: '{{ doc("source_medium_manual") }}'
       - name: IsPaid
-        description: true = bezahlte Kampagne 
+        description: true = bezahlte Kampagne
+      - name: Kampagenenkategorie
+        description: Brand = Suchkampagnen mit Markenbegriffen, Generisch = Alle Kampagnen, die nicht Brand sind (insb. Suchkampagnen mit generischen Suchbegriffen).
+      - name: Kampagnenprodukt
+        description: Grobe Differenzierung der durch die Kampagnen beworbenen Produkte.
+      - name: Produktkategorie
+        description: Eine Hierachiebene tiefer als Kampagnenprodukt. Für Strom/Gas = Differenzierung nach Strom, Gas, Heizstrom (wenn zutreffend), für Recruiting = Ausbildung oder Sonstige
+      - name: Kampagnenbetreuer
+        description: Ansprechpartner (Unternehmen) für die Kampagne. Exakte Zuordnung siehe Quelltext.
+      - name: Stellen_ID
+        description: Nur relevant für Recruiting-Kampagnen. Differenzierung der jeweils in den Kampagnen beworbenen Stellen auf Basis der Kampagnenbezeichnungen. Zuordnung erfolgt manuell.
+      - name: Gebiet
+        description: Vermarktungsgebiet der Kampagne gemäß Kampagnenbezeichnung. Insbesondere relevant für Paid-Vermarktung.
+      - name: Gebiet_clustered
+        description: Gruppierte Variante der Spalte Gebiet. Differenziert nur noch Stammgebiet und OOA.
+      - name: Werbenetzwerk
+        description: Netzwerk, in dem die Kampagne ausgespielt wurde. Basiert auf den Spalten "Campaign" & "Source".
   - name: mrt_zielvorhaben_uebersicht_NDG
     description: Enthält eine Übersicht aller verwendeten Conversionaktionen von NDG.
     columns:
       - name: Partner
-        description: EVO - kann genutzt werden, um Marken zu differenzieren.
+        description: '{{ doc("Partner") }}'
       - name: ZielvorhabenID
         description: ID aus ZielvorhabenName & Partner
       - name: ZielvorhabenName

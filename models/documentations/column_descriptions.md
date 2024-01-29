@@ -42,11 +42,11 @@ Gerät über das das Event generiert wurde (bspw. Anzeigenklick oder Sitzungsbeg
 {% enddocs %}
 
 {% docs campaign_name %}
-Kampagnenname wie in der jeweiligen Nutzeroberfläche angezeigt.
+Kampagnenname wie in der jeweiligen Nutzeroberfläche angezeigt. Entspricht dem UTM-Parameter "campaign".
 {% enddocs %}
 
 {% docs source_medium_manual %}
-Manuell durch NDG gesetzt Quelle/Medium.
+Entspricht den gleichnamigen UTM-Parameter.
 {% enddocs %}
 
 {% docs keyword %}
