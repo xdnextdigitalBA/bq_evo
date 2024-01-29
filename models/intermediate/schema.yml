@@ -83,8 +83,12 @@ models:
   - name: int_meta_campaign_stats_joined_campaign_names
     description: '{{ doc("campaign_stats") }}'
 
-  #Linkedin
+#Linkedin
   - name: int_linkedin_unique_campaigns_reduced_information
     description: '{{ doc("unique_campaigns") }}'
   - name: int_linkedin_campaign_stats_joined_campaign_names
     description: '{{ doc("campaign_stats") }}'
+
+#Multi-Source-Models
+  - name: int_all_campaigns
+    description: '{{ doc("unique_campaigns") }}'
