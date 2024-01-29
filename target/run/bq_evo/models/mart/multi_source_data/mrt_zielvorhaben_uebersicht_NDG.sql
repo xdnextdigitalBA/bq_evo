@@ -1,16 +1,24 @@
-{{
-  config(
-    materialized='table',
-    tags=["performancereporting", "vermarktungsdashboard", "daily"]
+
+  
+    
+
+    create or replace table `oss-big-query-dashboard-prod`.`mart`.`mrt_zielvorhaben_uebersicht_NDG`
+      
+    
+    
+
+    OPTIONS(
+      description="""Enth\u00e4lt eine \u00dcbersicht aller verwendeten Conversionaktionen von NDG."""
     )
-}}
+    as (
+      
 
 WITH _raw AS(
   SELECT DISTINCT
     ZielvorhabenName, 
     Partner,
     ZielvorhabenID
-  FROM {{ ref('mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized')}}
+  FROM `oss-big-query-dashboard-prod`.`mart`.`mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized`
 ),
 
 _add_Kategorie AS(
@@ -52,3 +60,5 @@ _add_Kategorie AS(
 )
 
 SELECT * FROM _add_Kategorie
+    );
+  

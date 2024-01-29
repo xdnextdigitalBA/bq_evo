@@ -1,16 +1,11 @@
-{{
-  config(
-    materialized='table',
-    tags=["performancereporting", "vermarktungsdashboard", "daily"]
-    )
-}}
+
 
 WITH _raw AS(
   SELECT DISTINCT
     ZielvorhabenName, 
     Partner,
     ZielvorhabenID
-  FROM {{ ref('mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized')}}
+  FROM `oss-big-query-dashboard-prod`.`mart`.`mrt_google_analytics_NDG_merged_ua_ga4_conversions_summarized`
 ),
 
 _add_Kategorie AS(
