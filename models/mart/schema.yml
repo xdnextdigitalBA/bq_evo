@@ -81,3 +81,14 @@ models:
           - not_null 
       - name: IsPaid
         description: true = bezahlte Kampagne 
+  - name: mrt_zielvorhaben_uebersicht_NDG
+    description: Enthält eine Übersicht aller verwendeten Conversionaktionen von NDG.
+    columns:
+      - name: Partner
+        description: EVO - kann genutzt werden, um Marken zu differenzieren.
+      - name: ZielvorhabenID
+        description: ID aus ZielvorhabenName & Partner
+      - name: ZielvorhabenName
+        description: Bezeichnung des Zielvorhabens bzw. entspricht dem GA4 Ereignis
+      - name: KategorieZielvorhaben
+        description: Clustert die unterschiedlichen Conversion-Ereignisse. Genutzt, um bei Kampagnen mit mehreren Conversionereignissen entsprechend alle Conversions bei der Performancebewertung zu berücksichtigen.

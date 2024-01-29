@@ -231,10 +231,10 @@ _add_Werbenetzwerk AS(
               l_campaign LIKE '%:s:%' OR
               l_campaign LIKE '%SEA_%' THEN "Google Suchnetzwerk" ELSE "Google Suchnetzwerk" END
         ) ELSE NULL END,
-        CASE WHEN Source = "facebook" THEN "Facebook" ELSE NULL END,
-        CASE WHEN Source = "instagram" THEN "Instagram" ELSE NULL END,
-        CASE WHEN Source = "bing" THEN "Bing" ELSE NULL END,
-        CASE WHEN Source LIKE '%linkedin%' THEN "LinkedIn" ELSE "Sonstige" END   
+      CASE WHEN Source = "facebook" THEN "Facebook" ELSE NULL END,
+      CASE WHEN Source = "instagram" THEN "Instagram" ELSE NULL END,
+      CASE WHEN Source = "bing" THEN "Bing" ELSE NULL END,
+      CASE WHEN Source LIKE '%linkedin%' THEN "LinkedIn" ELSE "Sonstige" END   
       ) AS Werbenetzwerk
     FROM _add_gebiet_cluster
     )
