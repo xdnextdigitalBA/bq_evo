@@ -83,11 +83,13 @@ models:
         description: '{{ doc("campaign_name") }}'
       - name: Medium
         description: '{{ doc("source_medium_manual") }}'
+      - name: Partner
+        description: '{{ doc("Partner") }}'
       - name: Source
         description: '{{ doc("source_medium_manual") }}'
       - name: IsPaid
         description: true = bezahlte Kampagne
-      - name: Kampagenenkategorie
+      - name: Kampagnenkategorie
         description: Brand = Suchkampagnen mit Markenbegriffen, Generisch = Alle Kampagnen, die nicht Brand sind (insb. Suchkampagnen mit generischen Suchbegriffen).
       - name: Kampagnenprodukt
         description: Grobe Differenzierung der durch die Kampagnen beworbenen Produkte.
