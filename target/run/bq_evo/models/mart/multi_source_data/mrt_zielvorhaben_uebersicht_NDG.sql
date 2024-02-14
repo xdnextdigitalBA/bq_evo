@@ -50,9 +50,10 @@ _add_Kategorie AS(
       CASE WHEN ZielvorhabenName 
         IN('Tarifrechnernutzung (ehem. Vertragsabschluss)') THEN "Lead - Tarifberechnung" ELSE NULL END,
       CASE WHEN ZielvorhabenName 
+        IN('click_online_application') THEN "Lead - Recruiting" ELSE NULL END,
+      CASE WHEN ZielvorhabenName 
         IN(
             'PV Rechner Anfrage gesendet',
-            'click_online_application',
             'purchase'
         ) THEN "Sonstige/nicht mehr zählen" ELSE "Sonstige/nicht mehr zählen" END
     ) as KategorieZielvorhaben

@@ -38,11 +38,12 @@ _add_Kategorie AS(
             'oss_registration_doi'
         ) THEN "Registrierung - Online Service" ELSE NULL END,
       CASE WHEN ZielvorhabenName 
-        IN('Onlinebewerbung (ehem.)Vertragsabschluss Mobile') THEN "Lead - Recruiting" ELSE NULL END,
+        IN(
+          'Onlinebewerbung (ehem.)Vertragsabschluss Mobile', 
+          'click_online_application'
+        ) THEN "Lead - Recruiting" ELSE NULL END,
       CASE WHEN ZielvorhabenName 
         IN('Tarifrechnernutzung (ehem. Vertragsabschluss)') THEN "Lead - Tarifberechnung" ELSE NULL END,
-      CASE WHEN ZielvorhabenName 
-        IN('click_online_application') THEN "Lead - Recruiting" ELSE NULL END,
       CASE WHEN ZielvorhabenName 
         IN(
             'PV Rechner Anfrage gesendet',
